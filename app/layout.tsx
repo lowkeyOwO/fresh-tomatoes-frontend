@@ -1,4 +1,6 @@
 import "@/styles/globals.css";
+import ReactQueryProvider from "@/components/ReactQuery/ReactQueryProvider";
+
 
 export default function RootLayout({
   children,
@@ -6,10 +8,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+    <ReactQueryProvider>
     <html lang="en">
       <body>
-        <main className="h-screen max-w-full justify-center content-center bg-gray-900 flex">{children}</main>
+        <main className="h-screen max-w-full p-0 m-0 bg-gray-900 flex flex-col place-items-center">{children}</main>
       </body>
     </html>
+    </ReactQueryProvider>
   );
 }

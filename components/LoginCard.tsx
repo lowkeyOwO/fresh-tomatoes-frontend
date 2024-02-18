@@ -23,14 +23,13 @@ export function LoginCard() {
   const handleLogin = async (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     try {
-        const result = await Authorize({ username, password });
-        console.log(result);
-        if (result.error) {
-          throw new Error(result.error);
-        }
-        if (result.token!== undefined) {
-          router.replace("/home");
-        }
+      const result = await Authorize({ username, password });
+      if (result.error) {
+        throw new Error(result.error);
+      }
+      if (result.token !== undefined) {
+        router.replace("/home");
+      }
     } catch (error) {
       alert(error);
     }
@@ -72,19 +71,17 @@ export function LoginCard() {
           </div>
         </CardContent>
         <CardFooter className="flex justify-between">
+          <Label className="text-green-500 mt-6 hover:scale-105 z-60 mb-6">
+            <Link href="https://www.themoviedb.org/signup">
+              Don't have an Account?
+            </Link>
+          </Label>
           <Button
-            className="text-gray-900 bg-green-400 hover:bg-green-500 hover:scale-105 z-60"
+            className="text-gray-900 w-28 text-md bg-green-400 hover:bg-green-500 hover:scale-105 z-60"
             onClick={handleLogin}
             type="submit"
           >
             Login
-          </Button>
-          <Button
-            asChild
-            variant="outline"
-            className="text-gray-900 bg-green-400 hover:bg-green-500 hover:scale-105 z-60"
-          >
-            <Link href="https://www.themoviedb.org/signup">Signup</Link>
           </Button>
         </CardFooter>
       </form>

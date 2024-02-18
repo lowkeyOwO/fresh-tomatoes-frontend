@@ -1,6 +1,4 @@
-import Link from "next/link";
-
-
+import { setCookie } from "cookies-next";
 interface AuthParams {
   username: string;
   password: string;
@@ -22,7 +20,7 @@ const Authorize = async (authData: AuthParams) => {
     const loginData = await loginStatus.json();
     if (loginStatus.ok) {
       // Storing in local storage & Redirect 
-      sessionStorage.setItem("fresh_tomatoes_auth_token",loginData.token);
+      setCookie("fresh_tomatoes_auth_token",loginData.token);
       return loginData;
     } else {
       console.error("API request failed", loginData.error);

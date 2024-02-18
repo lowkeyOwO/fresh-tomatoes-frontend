@@ -123,7 +123,6 @@ const quotesData: { [key: string]: { quote: string; director: string } } = {
   }
 }
 
-
 const getQuote = (): QuoteObj => {
   const randomIndex = Math.floor(Math.random() * 28) + 1;
   const selectedQuote = quotesData[randomIndex.toString()];
@@ -157,7 +156,8 @@ export default function Login() {
       ></Image>
       <div className="w-full h-full md:h-screen md:w-full md:col-span-2 centered text-white z-50 top-10 absolute md:top-0 md:relative">
         <LoginCard />
-      </div> 
+      </div>
     </div>
   );
 }
+

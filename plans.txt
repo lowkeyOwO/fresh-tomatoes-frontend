@@ -1,0 +1,7 @@
+- design in figma
+- configure cookie to expire in 7 days if not accessed
+- if token found in cookie, allow to homepage
+- homepage (show list of new movies, top rated movies etc)
+- movie page
+- user account page
+- settings page
