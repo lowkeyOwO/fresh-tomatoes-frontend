@@ -140,11 +140,11 @@ export default function Login() {
           alt="cinema"
           className="h-screen md:h-full"
         ></Image>
-        <div className="bg-black opacity-50 w-full md:w-3/5 h-full centered absolute top-0 left-0 z-5 md:z-10"></div>
-        <h1 className="hidden w-screen md:flex md:font-bold md:w-3/5  md:text-3xl absolute md:top-1/3 md:p-10 md:centered md:z-40 md:text-white">
+        <div className="bg-black opacity-50 w-full md:w-3/5 h-full centered justify-center absolute top-0 left-0 z-5 md:z-10"></div>
+        <h1 className="hidden w-screen md:flex md:font-bold md:w-3/5  md:text-3xl absolute md:top-1/3 md:p-10 md:justify-center md:centered md:z-40 md:text-white">
           "{quote}"
         </h1>
-        <h1 className="hidden w-screen md:flex md:font-bold md:w-1/4  md:text-3xl absolute md:top-3/4 md:left-1/4 md:p-10 md:centered md:z-40 md:text-white">
+        <h1 className="hidden w-screen md:flex md:font-bold md:w-1/4  md:text-3xl absolute md:top-3/4 md:left-1/4 md:p-10 md:centered md:z-40 md:text-white md:justify-center">
           - {director}
         </h1>
       </div>
@@ -154,7 +154,7 @@ export default function Login() {
         className="h-1/4 w-1/2 top-20 right-20 md:h-1/6 md:w-1/12
       absolute md:top-0 md:right-0 md:mr-8 md:mt-4"
       ></Image>
-      <div className="w-full h-full md:h-screen md:w-full md:col-span-2 centered text-white z-50 top-10 absolute md:top-0 md:relative">
+      <div className="w-full h-full md:h-screen md:w-full md:col-span-2 centered text-white z-50 top-10 absolute md:top-0 md:relative justify-center">
         <LoginCard />
       </div>
     </div>

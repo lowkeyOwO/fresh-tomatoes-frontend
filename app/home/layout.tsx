@@ -16,13 +16,20 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     return <Loading />;
   } else {
     if (data.newUser === true) {
-      return 
-        <GetFavoriteMovies/>
+      return;
+      <GetFavoriteMovies />;
     } else {
+      document.title = "Home";
       return (
         <>
-          <NavBar username={data.userExists.username} />
-          <main>{children}</main>
+          <NavBar
+            username={data.userDetails.userExists.username}
+            avatarURL={
+              process.env.NEXT_PUBLIC_AVATARURL +
+              data.userDetails.userExists.avatar_path
+            }
+          />
+          <div>{children}</div>
           <Footer />
         </>
       );
