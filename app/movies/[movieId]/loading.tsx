@@ -1,3 +1,6 @@
+import Image from "next/image";
+import preloader from "@/public/preloader.gif";
+
 export default function Loading() {
-    return <h1> LOADING </h1>
-};
+  return <Image src={preloader} alt="Fresh Tomatoes" className="h-screen w-screen"/>;
+}

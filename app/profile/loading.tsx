@@ -1,3 +1,7 @@
-export default function Loading() {
-    return (<h1 className="text-white text-9xl">Loading....</h1>);
-};
+import Image from "next/image";
+import preloader from "@/public/preloader.gif";
+
+export default async function Loading() {
+  return <Image src={preloader} alt="Fresh Tomatoes" className="h-screen w-screen"/>;
+}
+

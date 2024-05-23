@@ -10,10 +10,19 @@ import Iconimg from "@/public/Images/icon.png";
 import Genres from "@/components/Genres";
 import { CalendarDays, Clock8, Languages } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import Rating from "@/components/Rating";
 import getUserReview from "@/functions/getUserReview";
 import ReviewBox from "@/components/ReviewBox";
 import { useProfileData } from "./layout";
+import Link from "next/link";
+import emptyProfileImage from "@/public/Images/missing.png";
 
 interface MovieID {
   params: { movieId: string };
@@ -41,7 +50,8 @@ export default function Movie({ params }: MovieID) {
   if (movieLoading || !movieData || userLoading || !userData) {
     return <Loading />;
   } else {
-    document.title =  movieData.title;
+    console.log(movieData);
+    document.title = movieData.title;
     return (
       <>
         <div className="h-screen relative">
@@ -107,6 +117,35 @@ export default function Movie({ params }: MovieID) {
                 {displayNames.of(movieData.original_language)}
               </div>
             </div>
+            <Link href={`./people/${movieData.crew[0]["name"]}`}>
+              <div className="flex items-center flex-col">
+                <div className="w-48 h-48 relative">
+                  {movieData.crew[0]["profile_path"] != null ? (
+                    <Image
+                      src={movieData.crew[0]["profile_path"]}
+                      alt={movieData.crew[0].name}
+                      loader={imageLoader}
+                      fill
+                      className="rounded-md"
+                    />
+                  ) : (
+                    <Image
+                      src={emptyProfileImage}
+                      alt={movieData.crew[0].name}
+                      fill
+                      className="rounded-md"
+                    />
+                  )}
+                </div>
+                <div className="text-center">
+                  <h1 className="text-4xl font-extrabold mt-8">
+                    {movieData.crew[0]["name"]}
+                  </h1>
+                  <h1 className="text-2xl font-semibold mt-2">Director</h1>
+                </div>
+              </div>
+            </Link>
+
             <div className="">
               <Rating
                 avgRating={movieData.vote_average}
@@ -115,8 +154,60 @@ export default function Movie({ params }: MovieID) {
             </div>
           </div>
           <div className="bg-gray-900">
+            <div className="text-center text-gray-300 px-16 py-8 text-xl ">
+              {/* <Separator className="mt-4 mb-16" /> */}
+              <Carousel className="w-full">
+                <CarouselContent className="-ml-1">
+                  {movieData.cast.map((mem: any, index: number) => {
+                    return (
+                      <CarouselItem
+                        key={index}
+                        className="pl-4 md:basis-1/2 lg:basis-1/6"
+                      >
+                        <Link href={`./people/${mem.name}`}>
+                          <div className="p-4">
+                            <div className="flex aspect-square relative">
+                              {mem["profile_path"] != null ? (
+                                <Image
+                                  src={mem["profile_path"]}
+                                  alt={mem.name}
+                                  loader={imageLoader}
+                                  fill
+                                  className="rounded-md"
+                                />
+                              ) : (
+                                <Image
+                                  src={emptyProfileImage}
+                                  alt={mem.name}
+                                  fill
+                                  className="rounded-md"
+                                />
+                              )}
+                            </div>
+                            <h1 className="text-lg font-bold mt-4">
+                              {mem.name}
+                            </h1>
+                            <h1 className="text-sm font-light mt-2">
+                              {mem.character}
+                            </h1>
+                          </div>
+                        </Link>
+                      </CarouselItem>
+                    );
+                  })}
+                </CarouselContent>
+                {movieData.cast.length > 6 ? (
+                  <>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                  </>
+                ) : null}
+              </Carousel>
+            </div>
+          </div>
+          <div className="bg-gray-900">
             <div className="text-center text-gray-300 px-16 py-8 text-xl">
-              <Separator className="mt-4 mb-8" />
+              <Separator className=" mb-8" />
               {userData["reviews"].length === 0 ? (
                 <ReviewBox profileData={profileData} />
               ) : (
