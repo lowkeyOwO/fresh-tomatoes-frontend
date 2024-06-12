@@ -151,8 +151,8 @@ export default function Login() {
       <Image
         src={webicon}
         alt="logo"
-        className="h-1/4 w-1/2 top-20 right-20 md:h-1/6 md:w-1/12
-      absolute md:top-0 md:right-0 md:mr-8 md:mt-4"
+        className="h-1/4 w-1/2 top-20 right-20 md:h-1/6 md:w-1/6
+      absolute md:top-2 md:right-0 md:mr-8 md:mt-4"
       ></Image>
       <div className="w-full h-full md:h-screen md:w-full md:col-span-2 centered text-white z-50 top-10 absolute md:top-0 md:relative justify-center">
         <LoginCard />

@@ -1,7 +1,6 @@
 "use client";
 
 import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
 import { useQuery } from "@tanstack/react-query";
 import getUsername from "@/functions/getUsername";
 import Loading from "./loading";
@@ -14,7 +13,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   });
   if (isLoading || !data) {
     return <Loading />;
-  } else {
+  }  else {
     if (data.newUser === true) {
       return;
       <GetFavoriteMovies />;
@@ -30,7 +29,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             }
           />
           <div>{children}</div>
-          <Footer />
         </>
       );
     }

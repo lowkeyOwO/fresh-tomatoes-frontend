@@ -23,13 +23,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   } else {
     return (
       <>
-        <NavBar
-          username={data.userDetails.userExists.username}
-          avatarURL={
-            process.env.NEXT_PUBLIC_AVATARURL +
-            data.userDetails.userExists.avatar_path
-          }
-        />
         <UserNameContext.Provider value={data.userDetails.userExists.username}>
           <div className="w-full">{children}</div>
         </UserNameContext.Provider>

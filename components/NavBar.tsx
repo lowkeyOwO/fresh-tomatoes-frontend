@@ -50,7 +50,7 @@ export default function NavBar(params: TokenObj) {
           <Image
             src={icon}
             alt="FRESH TOMATOES"
-            className="h-20 w-20 left-0"
+            className="w-32 py-4 left-0"
           ></Image>
         </div>
         <div className="md:hidden">
@@ -96,7 +96,7 @@ export default function NavBar(params: TokenObj) {
             <ChevronsUpDownIcon className="hidden md:block text-black md:text-white ml-36 md:ml-0 -mt-6 md:mt-0 md:md-0" />
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            <Link href="/profile">
+            <Link href={`/profile/${params.username}`}>
               <DropdownMenuItem>Profile</DropdownMenuItem>
             </Link>
             <DropdownMenuItem>Settings</DropdownMenuItem>

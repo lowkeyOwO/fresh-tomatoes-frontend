@@ -2,11 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.tiptap .is-editor-empty:first-child::before {
+    color: rgb(209 213 219);
+    opacity: 50%;
+    font-weight: normal;
+    content: attr(data-placeholder);
+    float: left;
+    text-align: left;
+    height: 0;
+    pointer-events: none;
+}
+
+@layer base {
+
+    ul,
+    ol {
+        list-style: revert;
+        padding-left: 16px;
+        text-align: left;
+    }
+
+    ;
+
+    blockquote {
+        border-left: 3px solid white;
+        padding-left: 10px;
+    }
+}
+
 .centered {
     display: flex;
     align-items: center;
     /* justify-content: center; */
     flex-direction: row;
+}
+
+.text-shadow-custom {
+    --tw-shadow: 0 4.8px 9.6px rgba(17, 24, 39, 1);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 transparent), var(--tw-ring-shadow, 0 0 transparent), var(--tw-shadow);
 }
 
 .centered-col {

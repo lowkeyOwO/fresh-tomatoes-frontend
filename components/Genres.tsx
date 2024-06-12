@@ -1,5 +1,26 @@
+import {
+  Swords,
+  Map,
+  Baby,
+  Laugh,
+  Search,
+  ScrollText,
+  Drama,
+  Users2,
+  ShieldHalf,
+  BookX,
+  Ghost,
+  Music4,
+  FileQuestion,
+  Heart,
+  Glasses,
+  Activity,
+  Tv,
+  Ship,
+  Mountain,
+} from "lucide-react";
 import Link from "next/link";
-import { Separator } from "./ui/separator";
+import { ReactNode } from "react";
 
 interface SelectionParams {
   id: number;
@@ -11,25 +32,50 @@ interface SelectionProps {
 }
 
 const GenreColor: { [key: string]: string } = {
-  action: "#FF7F50", // coral
-  adventure: "#556B2F", // olive-drab
-  animation: "#0000FF", // blue
+  action: "#FF8C00", // dark-orange
+  adventure: "#6B8E23", // olive-drab
+  animation: "#6495ED", // cornflower-blue
   comedy: "#FFD700", // gold
-  crime: "#800000", // maroon
-  documentary: "#4B0082", // indigo
-  drama: "#8B008B", // dark-magenta
-  family: "#FF69B4", // hot-pink
-  fantasy: "#663399", // rebecca-purple
+  crime: "#8B0000", // dark-red
+  documentary: "#483D8B", // dark-slate-blue
+  drama: "#9932CC", // dark-orchid
+  family: "#FF1493", // deep-pink
+  fantasy: "#8A2BE2", // blue-violet
   history: "#008080", // teal
-  horror: "#FF4500", // orangered
-  music: "#FA8072", // salmon
-  mystery: "#800080", // purple
-  romance: "#FF1493", // deep-pink
-  sciencefiction: "#87CEFA", // lime
+  horror: "#FF6347", // tomato
+  music: "#4682B4", // steel-blue
+  mystery: "#4B0082", // indigo
+  romance: "#FF69B4", // hot-pink
+  sciencefiction: "#87CEEB", // sky-blue
   thriller: "#DC143C", // crimson
   tvmovie: "#FFD700", // gold
-  war: "#B22222", // fire-brick
-  western: "#DAA520", // goldenrod
+  war: "#800000", // maroon
+  western: "#CD853F", // peru
+};
+
+
+
+
+const GenreIcon: { [key: string]: ReactNode } = {
+  action: <Swords />, // coral
+  adventure: <Map />, // olive-drab
+  animation: <Baby />, // blue
+  comedy: <Laugh />, // gold
+  crime: <Search />, // maroon
+  documentary: <ScrollText />, // indigo
+  drama: <Drama />, // dark-magenta
+  family: <Users2 />, // hot-pink
+  fantasy: <ShieldHalf />, // rebecca-purple
+  history: <BookX />, // teal
+  horror: <Ghost />, // orangered
+  music: <Music4 />, // salmon
+  mystery: <FileQuestion />, // purple
+  romance: <Heart />, // deep-pink
+  sciencefiction: <Glasses />, // lime
+  thriller: <Activity />, // crimson
+  tvmovie: <Tv />, // gold
+  war: <Ship />, // fire-brick
+  western: <Mountain />, // goldenrod
 };
 
 export default function Genres({ selection }: SelectionProps) {
@@ -37,13 +83,14 @@ export default function Genres({ selection }: SelectionProps) {
     return (
       <Link href={`/genres/${genre.name.replace(" ", "-")}`} key={genre.id}>
         <div
-          className="rounded-full mx-2 hover:scale-105 hover:drop-shadow-[0_4.8px_9.6px_rgba(0,0,0,1)]"
+          className="rounded-lg flex items-center justify-center border-8 border-black border-double py-4 px-4 mx-2 hover:scale-105 hover:drop-shadow-[0_4.8px_9.6px_rgba(0,0,0,1)]"
           style={{
             backgroundColor:
               GenreColor[genre.name.replace(" ", "").toLowerCase()],
           }}
         >
-          <h1 className="p-1 mx-4 text-white text-center font-bold text-sm drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+          {GenreIcon[genre.name.replace(" ", "").toLowerCase()]}
+          <h1 className="mx-4 text-gray-900 text-center font-bold text-lg">
             {genre.name}
           </h1>
         </div>
@@ -52,3 +99,4 @@ export default function Genres({ selection }: SelectionProps) {
   });
   return <>{genreList}</>;
 }
+/**/

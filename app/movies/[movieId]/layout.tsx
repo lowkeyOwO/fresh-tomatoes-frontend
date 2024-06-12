@@ -2,13 +2,10 @@
 
 import { createContext, useContext } from "react";
 import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
 import { useQuery } from "@tanstack/react-query";
 import getUsername from "@/functions/getUsername";
 import Loading from "./loading";
 import { getCookie } from "cookies-next";
-import Head from "next/head";
-
 
 export const ProfileDataContext = createContext(null);
 
@@ -21,7 +18,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     queryFn: () =>
       getUsername(getCookie(process.env.NEXT_PUBLIC_FTATOKEN || "error")),
   });
-  if (isLoading || !profileData) {
+
+  if (
+    isLoading ||
+    !profileData ||
+    !profileData.userDetails ||
+    !profileData.userDetails.userExists
+  ) {
     return <Loading />;
   } else {
     return (
@@ -36,7 +39,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <ProfileDataContext.Provider value={profileData}>
           <div className="w-full">{children}</div>
         </ProfileDataContext.Provider>
-        <Footer />
       </>
     );
   }
