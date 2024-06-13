@@ -110,8 +110,8 @@ export default function Profile({ params }: Username) {
           objectPosition="top"
           alt="Background Image"
         />
-        <div className="absolute h-full w-full inset-0 bg-gradient-to-b from-black via-transparent to-black centered justify-center">
-          <h1 className="absolute font-extrabold text-gray-300 drop-shadow-[0_4.8px_9.6px_rgba(0,0,0,1)] text-9xl scale-125">
+        <div className="absolute h-full w-full inset-0 bg-gradient-to-b from-black via-transparent to-black flex flex-row items-center justify-center">
+          <h1 className="absolute font-extrabold text-gray-300 drop-shadow-[0_4.8px_9.6px_rgba(0,0,0,1)] text-4xl md:text-9xl scale-125">
             {username}
           </h1>
         </div>

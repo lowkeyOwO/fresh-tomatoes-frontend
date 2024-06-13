@@ -12,7 +12,7 @@ export interface InputProps
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, searchButton, ...props }, ref) => {
     return (
-      <>
+      <div className="w-full flex flex-row items-center justify-end">
         <input
           type={type}
           className={cn(
@@ -23,7 +23,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         {searchButton}
-      </>
+      </div>
     );
   }
 );

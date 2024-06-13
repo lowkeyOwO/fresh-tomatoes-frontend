@@ -101,7 +101,6 @@ export default function Review({
       setEditing(editStatus, reviewInputData);
     }
   };
-  //className="font-extrabold text-2xl float-left relative bg-gray-900 z-2 top-[1.2rem] border-r border-l border-t p-4  rounded-t-md border-gray-700 flex flex-row content-center"
   return (
     <div className="flex flex-col">
       <div className="w-full flex justify-between mx-4">
@@ -111,7 +110,7 @@ export default function Review({
               <HoverCardTrigger>
                 <Link
                   className="font-extrabold text-2xl float-left relative bg-gray-900 border p-2 rounded-md border-gray-700 flex flex-row content-center"
-                  href={`/users/${reviewProfileData.username}`}
+                  href={`/profile/${reviewProfileData.username}`}
                 >
                   <Avatar className="p-1">
                     <AvatarImage
