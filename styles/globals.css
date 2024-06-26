@@ -2,6 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+    width: 1vw;
+    background: rgb(17 24 39);
+    ;
+    height: 10vh;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: rgb(134 239 172);
+    border-radius: 4px;
+    -webkit-transition-duration: 0.4s;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    /* Safari */
+    overflow: scroll;
+    overflow: overlay;
+    transition-duration: 0.4s;
+}
+
+body::-webkit-scrollbar-track {
+    background: rgb(17 24 39);
+    ;
+}
 
 .tiptap .is-editor-empty:first-child::before {
     color: rgb(209 213 219);

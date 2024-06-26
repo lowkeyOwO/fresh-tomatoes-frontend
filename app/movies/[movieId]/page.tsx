@@ -66,8 +66,8 @@ export default function Movie({ params }: MovieID) {
       filteredReviewList,
       filteredUserData: GenerationParams;
     let generatedReviews: any[] = [];
-    if (userData.userDetails.length > 0) {
-      filteredUserDetails = userData.userDetails.filter(
+    if (userData.reviews.length > 0) {
+      filteredUserDetails = userData.reviews.filter(
         (user: UserDetails) => user.username !== currentUsername
       );
 
@@ -160,7 +160,7 @@ export default function Movie({ params }: MovieID) {
                 {displayNames.of(movieData.original_language)}
               </div>
             </div>
-            <Link href={`./people/${movieData.crew[0]["name"]}`}>
+            <Link href={`/people/${movieData.crew[0]["id"]}`}>
               <div className="flex items-center flex-col">
                 <div className="w-48 h-48 relative">
                   {movieData.crew[0]["profile_path"] != null ? (
@@ -204,9 +204,9 @@ export default function Movie({ params }: MovieID) {
                     return (
                       <CarouselItem
                         key={index}
-                        className="pl-4 md:basis-1/2 lg:basis-1/6"
+                        className="pl-4 md:basis-1/2 lg:basis-1/4 hover:scale-105 transition-all duration-500 ease-in-out"
                       >
-                        <Link href={`./people/${mem.name}`}>
+                        <Link href={`/people/${mem.id}`}>
                           <div className="p-4">
                             <div className="flex aspect-square relative">
                               {mem["profile_path"] != null ? (
@@ -280,12 +280,12 @@ export default function Movie({ params }: MovieID) {
             </div>
           ) : (
             <div className="relative h-1/5 w-full bg-gray-900 flex items-center justify-center">
-              <h1 className="text-2xl md:text-6xl text-center text-gray-300 font-extrabold absolute drop-shadow-[0_4.8px_9.6px_rgba(0,0,0,1)]">
+              <div className="text-2xl md:text-6xl text-center text-gray-300 font-extrabold absolute drop-shadow-[0_4.8px_9.6px_rgba(0,0,0,1)]">
                 Advancement made: How did we get here?
                 <h6 className="text-sm mt-2">
                   a small step for a human, a giant leap for the review-kind
                 </h6>
-              </h1>
+              </div>
               <svg id="patternId" width="100%" height="100%">
                 <defs>
                   <pattern

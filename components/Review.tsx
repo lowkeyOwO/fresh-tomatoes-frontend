@@ -175,7 +175,7 @@ export default function Review({
                 if (setEditing) {
                   setEditStatus(true);
                 } else {
-                  router.replace(`/movies/${reviewData.movie_id}`);
+                  router.replace(`/movies/${reviewData.movie_id}`, { scroll: false });
                 }
               }}
             >
@@ -217,16 +217,16 @@ export default function Review({
       <div className="flex flex-col max-h-screen p-4 m-4 bg-gray-900 border border-gray-700 rounded-md">
         <div className="h-1/5 w-full flex items-start justify-between">
           <h1 className="font-semibold text-4xl">{reviewData.title}</h1>
-          <div className="font-extrabold w-[5%] relative top-1 right-1 ">
+          <div className="font-extrabold w-[5%] relative top-1 right-1 flex flex-col items-center justify-center">
             <CircularProgressbar
               value={+reviewData.rating.$numberDecimal * 10}
-              text={`${+reviewData.rating.$numberDecimal * 10}%`}
               styles={buildStyles({
                 pathColor: getPathColor(+reviewData.rating.$numberDecimal * 10),
                 textColor: "#fff",
                 trailColor: "#111827",
               })}
             />
+              <h1 className="absolute text-xs md:text-sm">{+reviewData.rating.$numberDecimal * 10}%</h1>
           </div>
         </div>
         <div className="h-1/5 w-full flex justify-between items-center pb-4 border-b border-gray-700">

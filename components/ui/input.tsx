@@ -1,8 +1,6 @@
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
-import { Search } from "lucide-react";
-import { ButtonProps } from "./button";
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {

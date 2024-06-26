@@ -13,7 +13,7 @@ interface cardParams {
 export default function FavoriteMovieCard({ movieId, name, imagePath }: cardParams) {
   
   return (
-      <div className="h-full w-1/4 bg-gray-900 p-4">
+      <div className="h-full w-1/4 bg-gray-900 p-4 hover:scale-[101%]">
         <Link href={`/movies/${movieId}`}>
         <div className="h-3/4 w-full relative">
           <Image

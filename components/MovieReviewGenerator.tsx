@@ -32,13 +32,15 @@ export interface GenerationParams {
   reviews: Reviews;
 }
 
+
+
 export default function generateReviews({
   userDetails,
   reviews,
 }: GenerationParams): JSX.Element[] {
   const { review_list } = reviews;
   return review_list.map((reviewData: Review) => (
-    <div className="text-center bg-gray-900 text-gray-300 px-16 py-8 text-xl">
+    <div className="text-center bg-gray-900 text-gray-300 px-16 py-8 text-xl ">
       <Review
         key={reviewData.created_at}
         reviewData={{ ...reviewData, movie_id: reviews.movie_id, movie_name : reviews.movie_name }}

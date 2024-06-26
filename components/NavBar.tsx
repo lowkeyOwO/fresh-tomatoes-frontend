@@ -13,16 +13,27 @@ import {
 } from "@/components/ui/sheet";
 import { Token } from "@/functions/getUsername";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Home, MenuIcon, Search, Settings, User2 } from "lucide-react";
+import { Home, Search, Settings, User2 } from "lucide-react";
 import Link from "next/link";
-import { deleteCookie } from "cookies-next";
+import { deleteCookie, getCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Separator } from "./ui/separator";
+import searchForData from "@/functions/searchForData";
+import { generateSearchMovies, generateSearchPeople, generateSearchUsers } from "./ui/searchBarGenerators";
+
 
 interface TokenObj {
   username: Token;
   avatarURL: string;
 }
+
 export default function NavBar(params: TokenObj) {
   const router = useRouter();
   const Logout = () => {
@@ -32,11 +43,24 @@ export default function NavBar(params: TokenObj) {
   if (params.username === undefined) {
     Logout();
   }
-
-  const searchMovie = () => {
-    router.push("/search");
+  const [isSearching, setSearching] = useState<boolean>(false);
+  const [resultData, setResultData] = useState<any>(null);
+  const searchData = async (searchValue: string) => {
+    setDropdownOpen(true);
+    const searchResults = await searchForData(
+      searchValue || "",
+      getCookie("fresh_tomatoes_auth_token") || ""
+    );
+    if (!searchResults) {
+      setSearching(true);
+    } else {
+      setSearching(false);
+      console.log(searchResults)
+      setResultData(searchResults);
+    }
   };
   const [searchValue, setSearchValue] = useState<string>("");
+  const [isDropdownOpen, setDropdownOpen] = useState<boolean>(false);
 
   return (
     <nav
@@ -50,21 +74,70 @@ export default function NavBar(params: TokenObj) {
         ></Image>
       </div>
       <div className="flex flex-row items-center justify-between p-4 gap-16">
-        <Input
-          id="search"
-          type="text"
-          placeholder="Develop your film roll"
-          className="hidden md:block mr-0 mt-0 w-80 text-black font-bold"
-          onChange={(e) => setSearchValue(e.target.value)}
-          searchButton={
-            <button
-              onClick={() => searchMovie()}
-              className="absolute text-black mr-2 hidden md:block"
-            >
-              <Search />
-            </button>
-          }
-        ></Input>
+        <div className="flex flex-row items-center justify-end">
+          <Input
+            id="search"
+            type="text"
+            placeholder="Develop your film roll"
+            className="hidden md:block mr-0 mt-0 w-80 text-black font-bold"
+            onChange={(e) => setSearchValue(e.target.value)}
+          ></Input>
+          <button
+            onClick={() => {
+              if (searchValue === "") {
+                alert("Search cannot be empty!");
+              } else {
+                searchData(searchValue);
+              }
+            }}
+            className="text-black absolute mr-2 hidden md:block z-50"
+          >
+            <Search />
+          </button>
+          <DropdownMenu open={isDropdownOpen} onOpenChange={setDropdownOpen}>
+            <DropdownMenuTrigger className="opacity-0" />
+            <DropdownMenuContent className="mr-48 mt-8 bg-gray-900">
+              <Tabs
+                defaultValue="users"
+                className="w-96 bg-gray-900 text-gray-300"
+              >
+                <TabsList className="flex items-center justify-between bg-gray-900 text-gray-300">
+                  <TabsTrigger className="w-full" value="users">
+                    Users
+                  </TabsTrigger>
+                  <TabsTrigger className="w-full" value="movies">
+                    Movies
+                  </TabsTrigger>
+                  <TabsTrigger className="w-full" value="people">
+                    People
+                  </TabsTrigger>
+                </TabsList>
+                <Separator className="mt-1" />
+                <TabsContent value="users">
+                  {isSearching && resultData == null ? (
+                    <p>still searching...</p>
+                  ) : (
+                    generateSearchUsers(resultData?.users)
+                  )}
+                </TabsContent>
+                <TabsContent value="movies">
+                {isSearching && resultData == null ? (
+                    <p>still searching...</p>
+                  ) : (
+                    generateSearchMovies(resultData?.movies)
+                  )}
+                </TabsContent>
+                <TabsContent value="people">
+                {isSearching && resultData == null ? (
+                    <p>still searching...</p>
+                  ) : (
+                    generateSearchPeople(resultData?.people)
+                  )}
+                </TabsContent>
+              </Tabs>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
         <Sheet>
           <SheetTrigger asChild>
             <div className="flex flex-row items-center gap-4">
@@ -88,7 +161,7 @@ export default function NavBar(params: TokenObj) {
               onChange={(e) => setSearchValue(e.target.value)}
               searchButton={
                 <button
-                  onClick={() => searchMovie()}
+                  onClick={() => searchData(searchValue)}
                   className="block md:hidden text-black absolute mr-4"
                 >
                   <Search />
@@ -97,20 +170,20 @@ export default function NavBar(params: TokenObj) {
             ></Input>
             <Link
               href={`/home`}
-              className="flex flex-row gap-8 text-2xl items-center justify-center font-semibold  hover:bg-green-300 w-full p-1 rounded-md hover:text-gray-900 py-4"
+              className="flex flex-row gap-8 text-2xl items-center justify-center font-semibold  hover:bg-green-300 w-full p-1 rounded-md hover:text-gray-900 py-4 transition-all duration-500 ease-in-out hover:scale-105"
             >
               <Home className="h-8 w-8" />
               Home
             </Link>
             <Link
               href={`/profile/${params.username}`}
-              className="flex flex-row gap-8 text-2xl items-center justify-center font-semibold  hover:bg-green-300 w-full p-1 rounded-md hover:text-gray-900 py-4"
+              className="flex flex-row gap-8 text-2xl items-center justify-center font-semibold  hover:bg-green-300 w-full p-1 rounded-md hover:text-gray-900 py-4 transition-all duration-500 ease-in-out hover:scale-105"
             >
               <User2 className="h-8 w-8" /> Profile
             </Link>
             <Link
               href={`/settings`}
-              className="flex flex-row gap-8 text-2xl items-center justify-center font-semibold  hover:bg-green-300 w-full p-1 rounded-md hover:text-gray-900 py-4"
+              className="flex flex-row gap-8 text-2xl items-center justify-center font-semibold  hover:bg-green-300 w-full p-1 rounded-md hover:text-gray-900 py-4 transition-all duration-500 ease-in-out hover:scale-105"
             >
               <Settings className="h-8 w-8" /> Settings
             </Link>
@@ -118,7 +191,7 @@ export default function NavBar(params: TokenObj) {
               <SheetClose asChild>
                 <Button
                   onClick={Logout}
-                  className="bg-red-600 hover:bg-red-700 w-full"
+                  className="bg-red-600 hover:bg-red-700 w-full transition-all duration-500 ease-in-out hover:scale-105"
                 >
                   Logout
                 </Button>
