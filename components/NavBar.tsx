@@ -21,13 +21,17 @@ import { Button } from "./ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "./ui/separator";
 import searchForData from "@/functions/searchForData";
-import { generateSearchMovies, generateSearchPeople, generateSearchUsers } from "./ui/searchBarGenerators";
-
+import {
+  generateSearchMovies,
+  generateSearchPeople,
+  generateSearchUsers,
+} from "./ui/searchBarGenerators";
 
 interface TokenObj {
   username: Token;
@@ -55,7 +59,7 @@ export default function NavBar(params: TokenObj) {
       setSearching(true);
     } else {
       setSearching(false);
-      console.log(searchResults)
+      console.log(searchResults);
       setResultData(searchResults);
     }
   };
@@ -96,45 +100,47 @@ export default function NavBar(params: TokenObj) {
           </button>
           <DropdownMenu open={isDropdownOpen} onOpenChange={setDropdownOpen}>
             <DropdownMenuTrigger className="opacity-0" />
-            <DropdownMenuContent className="mr-48 mt-8 bg-gray-900">
-              <Tabs
-                defaultValue="users"
-                className="w-96 bg-gray-900 text-gray-300"
-              >
-                <TabsList className="flex items-center justify-between bg-gray-900 text-gray-300">
-                  <TabsTrigger className="w-full" value="users">
-                    Users
-                  </TabsTrigger>
-                  <TabsTrigger className="w-full" value="movies">
-                    Movies
-                  </TabsTrigger>
-                  <TabsTrigger className="w-full" value="people">
-                    People
-                  </TabsTrigger>
-                </TabsList>
-                <Separator className="mt-1" />
-                <TabsContent value="users">
-                  {isSearching && resultData == null ? (
-                    <p>still searching...</p>
-                  ) : (
-                    generateSearchUsers(resultData?.users)
-                  )}
-                </TabsContent>
-                <TabsContent value="movies">
-                {isSearching && resultData == null ? (
-                    <p>still searching...</p>
-                  ) : (
-                    generateSearchMovies(resultData?.movies)
-                  )}
-                </TabsContent>
-                <TabsContent value="people">
-                {isSearching && resultData == null ? (
-                    <p>still searching...</p>
-                  ) : (
-                    generateSearchPeople(resultData?.people)
-                  )}
-                </TabsContent>
-              </Tabs>
+            <DropdownMenuContent className="mr-48 mt-8 bg-gray-900 hidden md:block">
+              <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+                <Tabs
+                  defaultValue="users"
+                  className="w-96 bg-gray-900 text-gray-300"
+                >
+                  <TabsList className="flex items-center justify-between bg-gray-900 text-gray-300">
+                    <TabsTrigger className="w-full" value="users">
+                      Users
+                    </TabsTrigger>
+                    <TabsTrigger className="w-full" value="movies">
+                      Movies
+                    </TabsTrigger>
+                    <TabsTrigger className="w-full" value="people">
+                      People
+                    </TabsTrigger>
+                  </TabsList>
+                  <Separator className="mt-1" />
+                  <TabsContent value="users">
+                    {isSearching && resultData == null ? (
+                      <p>still searching...</p>
+                    ) : (
+                      generateSearchUsers(resultData?.users)
+                    )}
+                  </TabsContent>
+                  <TabsContent value="movies">
+                    {isSearching && resultData == null ? (
+                      <p>still searching...</p>
+                    ) : (
+                      generateSearchMovies(resultData?.movies)
+                    )}
+                  </TabsContent>
+                  <TabsContent value="people">
+                    {isSearching && resultData == null ? (
+                      <p>still searching...</p>
+                    ) : (
+                      generateSearchPeople(resultData?.people)
+                    )}
+                  </TabsContent>
+                </Tabs>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
@@ -153,21 +159,75 @@ export default function NavBar(params: TokenObj) {
             </div>
           </SheetTrigger>
           <SheetContent className="w-screen md:w-[20%] bg-gray-900 border-l border-gray-900 text-gray-300 flex flex-col pt-16 gap-4  items-center">
-            <Input
-              id="search"
-              type="text"
-              placeholder="Develop your film roll"
-              className="block md:hidden text-black font-bold"
-              onChange={(e) => setSearchValue(e.target.value)}
-              searchButton={
-                <button
-                  onClick={() => searchData(searchValue)}
-                  className="block md:hidden text-black absolute mr-4"
-                >
-                  <Search />
-                </button>
-              }
-            ></Input>
+            <div className="flex flex-row items-center justify-end">
+              <Input
+                id="search"
+                type="text"
+                placeholder="Develop your film roll"
+                className="block md:hidden w-72 text-black font-bold mx-0"
+                onChange={(e) => setSearchValue(e.target.value)}
+              ></Input>
+              <button
+                onClick={() => {
+                  if (searchValue === "") {
+                    alert("Search cannot be empty!");
+                  } else {
+                    searchData(searchValue);
+                  }
+                }}
+                className="text-black absolute mr-2 md:hidden block z-50"
+              >
+                <Search />
+              </button>
+              <DropdownMenu
+                open={isDropdownOpen}
+                onOpenChange={setDropdownOpen}
+              >
+                <DropdownMenuTrigger className="opacity-0" />
+                <DropdownMenuContent className="mt-8 bg-gray-900 block md:hidden max-w-xs">
+                  <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+                    <Tabs
+                      defaultValue="users"
+                      className="bg-gray-900 text-gray-300 w-80"
+                    >
+                      <TabsList className="flex items-center justify-between max-w-xs bg-gray-900 text-gray-300">
+                        <TabsTrigger className="w-full" value="users">
+                          Users
+                        </TabsTrigger>
+                        <TabsTrigger className="w-full" value="movies">
+                          Movies
+                        </TabsTrigger>
+                        <TabsTrigger className="w-full" value="people">
+                          People
+                        </TabsTrigger>
+                      </TabsList>
+                      <Separator className="mt-1" />
+                      <TabsContent value="users">
+                        {isSearching && resultData == null ? (
+                          <p>still searching...</p>
+                        ) : (
+                          generateSearchUsers(resultData?.users)
+                        )}
+                      </TabsContent>
+                      <TabsContent value="movies">
+                        {isSearching && resultData == null ? (
+                          <p>still searching...</p>
+                        ) : (
+                          generateSearchMovies(resultData?.movies)
+                        )}
+                      </TabsContent>
+                      <TabsContent value="people">
+                        {isSearching && resultData == null ? (
+                          <p>still searching...</p>
+                        ) : (
+                          generateSearchPeople(resultData?.people)
+                        )}
+                      </TabsContent>
+                    </Tabs>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
             <Link
               href={`/home`}
               className="flex flex-row gap-8 text-2xl items-center justify-center font-semibold  hover:bg-green-300 w-full p-1 rounded-md hover:text-gray-900 py-4 transition-all duration-500 ease-in-out hover:scale-105"

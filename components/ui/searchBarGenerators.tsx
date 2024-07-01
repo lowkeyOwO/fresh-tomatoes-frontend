@@ -63,7 +63,6 @@ export function generateSearchMovies(
   if (!searchMovies || searchMovies.length === 0) {
     return <h1>No movies found!</h1>;
   }
-  console.log(searchMovies);
   return (
     <ScrollArea className="h-48 flex">
       {searchMovies.map((movie) => (
@@ -104,6 +103,7 @@ export function generateSearchMovies(
 }
 
 interface SearchPerson {
+  id: number;
   name: string;
   profile_path: string;
   department : string;
@@ -120,9 +120,9 @@ export function generateSearchPeople(
     <ScrollArea className="h-48 flex">
       {searchPeople.map((person) => (
         <Link
-          href={`/profile/${person.name}`}
+          href={`/people/${person.id}`}
           key={person.name}
-          className="flex p-4 border hover:border-green-300 items-center rounded-md w-[23.9rem] mb-4"
+          className="flex p-4 border hover:border-green-300 items-center rounded-md w-full mb-4"
         >
           <div className="w-16 h-24 relative flex items-center">
             <Image

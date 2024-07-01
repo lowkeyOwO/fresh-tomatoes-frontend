@@ -11,8 +11,6 @@ import missingImg from "@/public/Images/missing.png";
 import { useEffect, useState } from "react";
 import { Cake, MapPin } from "lucide-react";
 import { formatDate } from "@/components/Review";
-import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
