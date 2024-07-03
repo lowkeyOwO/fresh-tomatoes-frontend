@@ -7,7 +7,7 @@ import getUsername from "@/functions/getUsername";
 import Loading from "./loading";
 import { getCookie } from "cookies-next";
 
-export const ProfileDataContext = createContext(null);
+const ProfileDataContext = createContext(null);
 
 export const useProfileData = () => {
   return useContext(ProfileDataContext);

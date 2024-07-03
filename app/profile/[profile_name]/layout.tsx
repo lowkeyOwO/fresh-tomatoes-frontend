@@ -7,7 +7,7 @@ import Loading from "./loading";
 import { getCookie } from "cookies-next";
 import { createContext, useContext } from "react";
 
-export const UserNameContext = createContext(null);
+const UserNameContext = createContext(null);
 
 export const useUsernameData = () => {
   return useContext(UserNameContext);
