@@ -1,0 +1,2 @@
+FRESH_TOMATOES_ICON="https://www.logomaker.com/"
+LOGIN_PAGE_IMAGE="https://wallpapercave.com/theater-wallpapers"
