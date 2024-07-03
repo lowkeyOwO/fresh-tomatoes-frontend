@@ -132,6 +132,7 @@ const getQuote = (): QuoteObj => {
 
 export default function Login() {
   const { quote, director } = getQuote();
+  console.log( "login Image:",loginimg)
   return (
     <div className="w-screen h-screen grid grid-rows-1 md:grid-cols-5 ">
       <div className="w-full h-full bg-white md:h-screen md:w-full md:col-span-3">
@@ -154,7 +155,7 @@ export default function Login() {
         className="h-1/4 w-1/2 top-20 right-20 md:h-1/6 md:w-1/6
       absolute md:top-2 md:right-0 md:mr-8 md:mt-4"
       ></Image>
-      <div className="w-full h-full md:h-screen md:w-full md:col-span-2 centered text-white z-50 top-10 absolute md:top-0 md:relative justify-center">
+      <div className="w-full h-full md:h-screen md:w-full md:col-span-2 flex flex-col items-center text-white z-50 top-10 absolute md:top-0 md:relative justify-center">
         <LoginCard />
       </div>
     </div>

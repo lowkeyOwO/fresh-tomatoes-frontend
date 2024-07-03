@@ -66,8 +66,9 @@ export default function Movie({ params }: MovieID) {
       filteredReviewList,
       filteredUserData: GenerationParams;
     let generatedReviews: any[] = [];
-    if (userData.reviews.length > 0) {
-      filteredUserDetails = userData.reviews.filter(
+    console.log("userdata",userData);
+    if (userData.userDetails.length > 0) {
+      filteredUserDetails = userData.userDetails.filter(
         (user: UserDetails) => user.username !== currentUsername
       );
 

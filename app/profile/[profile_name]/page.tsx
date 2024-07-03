@@ -154,7 +154,7 @@ export default function Profile({ params }: Username) {
                         key={index}
                         className="pl-4 md:basis-1/2 lg:basis-1/4 hover:scale-105 transition-all duration-500 ease-in-out"
                       >
-                        <Link href={`/people/${movie.id}`}>
+                        <Link href={`/movies/${movie.id}`}>
                           <div className="p-4">
                             <div className="flex aspect-square relative">
                               {movie.poster_path != null ? (
