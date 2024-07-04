@@ -1,7 +1,4 @@
-import Image from "next/image";
-import loginimg from "../public/Images/loginimg.jpg";
 import { LoginCard } from "@/components/LoginCard";
-import webicon from "../public/Images/icon.png";
 
 interface QuoteObj {
   quote: string;

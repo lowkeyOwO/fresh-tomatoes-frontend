@@ -40,7 +40,7 @@ export default function Home() {
     return (
       <div className="bg-gray-900 w-screen">
         <div className="relative w-screen h-screen">
-          <Image 
+          <Image
             loader={imageLoader}
             layout="fill"
             src={bgImage}
@@ -87,7 +87,7 @@ export default function Home() {
                         <div className="p-4">
                           <div className="flex aspect-square relative">
                             {movie["poster_path"] != null ? (
-                              <Image 
+                              <Image
                                 src={movie["poster_path"]}
                                 alt={movie.name}
                                 loader={imageLoader}
@@ -95,10 +95,11 @@ export default function Home() {
                                 className="rounded-md"
                               />
                             ) : (
-                              <Image 
-                                src={missingImg}
+                              <img
+                                src={
+                                  "https://fresh-tomatoes.onrender.com/Images/missing.png"
+                                }
                                 alt={movie.name}
-                                fill
                                 className="rounded-md"
                               />
                             )}
@@ -119,8 +120,7 @@ export default function Home() {
           </Carousel>
         </div>
         <div className="text-center text-gray-300 py-8 text-xl">
-        <h1 className="my-8 text-8xl uppercase font-black font-outline rounded-xl text-green-300 add-bg mx-96">
-
+          <h1 className="my-8 text-8xl uppercase font-black font-outline rounded-xl text-green-300 add-bg mx-96">
             Popular
           </h1>
           <Carousel
@@ -144,7 +144,7 @@ export default function Home() {
                         <div className="p-4">
                           <div className="flex aspect-square relative">
                             {movie["poster_path"] != null ? (
-                              <Image 
+                              <Image
                                 src={movie["poster_path"]}
                                 alt={movie.name}
                                 loader={imageLoader}
@@ -152,10 +152,11 @@ export default function Home() {
                                 className="rounded-md"
                               />
                             ) : (
-                              <Image 
-                                src={missingImg}
+                              <img
+                                src={
+                                  "https://fresh-tomatoes.onrender.com/Images/missing.png"
+                                }
                                 alt={movie.name}
-                                fill
                                 className="rounded-md"
                               />
                             )}
@@ -176,7 +177,7 @@ export default function Home() {
           </Carousel>
         </div>
         <div className="text-center text-gray-300 py-8 text-xl">
-        <h1 className="my-8 text-8xl uppercase font-black font-outline rounded-xl text-green-300 add-bg mx-96">
+          <h1 className="my-8 text-8xl uppercase font-black font-outline rounded-xl text-green-300 add-bg mx-96">
             Top Rated
           </h1>
           <Carousel
@@ -200,7 +201,7 @@ export default function Home() {
                         <div className="p-4">
                           <div className="flex aspect-square relative">
                             {movie["poster_path"] != null ? (
-                              <Image 
+                              <Image
                                 src={movie["poster_path"]}
                                 alt={movie.name}
                                 loader={imageLoader}
@@ -208,10 +209,11 @@ export default function Home() {
                                 className="rounded-md"
                               />
                             ) : (
-                              <Image 
-                                src={missingImg}
+                              <img
+                                src={
+                                  "https://fresh-tomatoes.onrender.com/Images/missing.png"
+                                }
                                 alt={movie.name}
-                                fill
                                 className="rounded-md"
                               />
                             )}

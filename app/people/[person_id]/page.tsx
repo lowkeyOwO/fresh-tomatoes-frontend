@@ -6,7 +6,6 @@ import { getCookie } from "cookies-next";
 import Loading from "./loading";
 import Image from "next/image";
 import { imageLoader } from "@/functions/imageLoader";
-import loginimg from "@/public/Images/loginimg.jpg";
 import missingImg from "@/public/Images/missing.png";
 import { useEffect, useState } from "react";
 import { Cake, MapPin } from "lucide-react";
@@ -71,7 +70,7 @@ export default function Person({ params }: PersonID) {
         <div className="h-screen relative">
           <div className="relative w-full h-full">
             {peopleData?.personCreditDetails?.backdropPaths.length > 0 ? (
-              <Image 
+              <Image
                 loader={imageLoader}
                 layout="fill"
                 src={bgImage}
@@ -80,11 +79,8 @@ export default function Person({ params }: PersonID) {
                 alt="Background Image"
               />
             ) : (
-              <Image 
-                layout="fill"
-                src={loginimg}
-                objectFit="fill"
-                objectPosition="top"
+              <img
+                src={"https://fresh-tomatoes.onrender.com/Images/missing.png"}
                 alt="Background Image"
               />
             )}
@@ -97,17 +93,21 @@ export default function Person({ params }: PersonID) {
           </div>
           <div className="relative flex flex-row items-center justify-center bg-gray-900">
             <div className="relative h-96 w-72 z-60 -mt-48 mb-16">
-              <Image 
-                className="rounded-md"
-                loader={imageLoader}
-                src={
-                  peopleData?.personDetails?.profile_path != ""
-                    ? peopleData?.personDetails?.profile_path
-                    : missingImg
-                }
-                layout="fill"
-                alt={peopleData?.personDetails?.name?.substring(0, 3) || "FT"}
-              />
+              {peopleData?.personDetails?.profile_path != "" ? (
+                <Image
+                  className="rounded-md"
+                  loader={imageLoader}
+                  src={peopleData?.personDetails?.profile_path}
+                  layout="fill"
+                  alt={peopleData?.personDetails?.name?.substring(0, 3) || "FT"}
+                />
+              ) : (
+                <img
+                  src={"https://fresh-tomatoes.onrender.com/Images/missing.png"}
+                  alt={peopleData?.personDetails?.name?.substring(0, 3) || "FT"}
+                  className="rounded-md"
+                />
+              )}
             </div>
           </div>
           <div className="bg-gray-900">
@@ -166,7 +166,7 @@ export default function Person({ params }: PersonID) {
                             <div className="p-4">
                               <div className="flex aspect-square relative">
                                 {movie["poster_path"] != null ? (
-                                  <Image 
+                                  <Image
                                     src={movie["poster_path"]}
                                     alt={movie.name}
                                     loader={imageLoader}
@@ -174,10 +174,11 @@ export default function Person({ params }: PersonID) {
                                     className="rounded-md"
                                   />
                                 ) : (
-                                  <Image 
-                                    src={missingImg}
+                                  <img
+                                    src={
+                                      "https://fresh-tomatoes.onrender.com/Images/missing.png"
+                                    }
                                     alt={movie.name}
-                                    fill
                                     className="rounded-md"
                                   />
                                 )}

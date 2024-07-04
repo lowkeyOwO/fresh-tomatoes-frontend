@@ -18,7 +18,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import missingImg from "@/public/Images/missing.png";
+
 import Link from "next/link";
 
 interface UserDetails {
@@ -126,7 +126,7 @@ export default function Profile({ params }: Username) {
             <Image 
               className="p-4 rounded-full shadow-md shadow-gray-200/40"
               loader={imageLoader}
-              src={avatarPath || Iconimg}
+              src={avatarPath}
               layout="fill"
               alt={"FT"}
             />
@@ -166,10 +166,9 @@ export default function Profile({ params }: Username) {
                                   className="rounded-md"
                                 />
                               ) : (
-                                <Image 
-                                  src={missingImg}
+                                <img
+                                src={"https://fresh-tomatoes.onrender.com/Images/missing.png"}
                                   alt={movie.title}
-                                  fill
                                   className="rounded-md"
                                 />
                               )}

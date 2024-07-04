@@ -1,6 +1,9 @@
-import Image from "next/image";
-import preloader from "../../public/preloader.gif";
-
 export default function Loading() {
-  return <Image  src={preloader} alt="Fresh Tomatoes" className="h-screen w-screen"/>;
+  return (
+    <img
+      src={"https://fresh-tomatoes.onrender.com/preloader.gif"}
+      alt="Fresh Tomatoes"
+      className="h-screen w-screen"
+    />
+  );
 }

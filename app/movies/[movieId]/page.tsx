@@ -66,7 +66,7 @@ export default function Movie({ params }: MovieID) {
       filteredReviewList,
       filteredUserData: GenerationParams;
     let generatedReviews: any[] = [];
-    console.log("userdata",userData);
+    console.log("userdata", userData);
     if (userData.userDetails.length > 0) {
       filteredUserDetails = userData.userDetails.filter(
         (user: UserDetails) => user.username !== currentUsername
@@ -90,7 +90,7 @@ export default function Movie({ params }: MovieID) {
         <div className="h-screen relative">
           <div className="relative w-full h-full">
             {movieData.backdrop_path != null ? (
-              <Image 
+              <Image
                 loader={imageLoader}
                 layout="fill"
                 src={movieData.backdrop_path}
@@ -99,11 +99,8 @@ export default function Movie({ params }: MovieID) {
                 alt="Background Image"
               />
             ) : (
-              <Image 
-                layout="fill"
-                src={loginimg}
-                objectFit="fill"
-                objectPosition="top"
+              <img
+                src={"https://fresh-tomatoes.onrender.com/Images/missing.png"}
                 alt="Background Image"
               />
             )}
@@ -116,10 +113,10 @@ export default function Movie({ params }: MovieID) {
           </div>
           <div className="relative flex flex-row items-center justify-center bg-gray-900">
             <div className="relative h-96 w-72 z-60 -mt-48 mb-16">
-              <Image 
+              <Image
                 className="rounded-md"
                 loader={imageLoader}
-                src={movieData.poster_path || Iconimg}
+                src={movieData.poster_path}
                 layout="fill"
                 alt={movieData.title?.substring(0, 2) || "FT"}
               />
@@ -165,7 +162,7 @@ export default function Movie({ params }: MovieID) {
               <div className="flex items-center flex-col">
                 <div className="w-48 h-48 relative">
                   {movieData.crew[0]["profile_path"] != null ? (
-                    <Image 
+                    <Image
                       src={movieData.crew[0]["profile_path"]}
                       alt={movieData.crew[0].name}
                       loader={imageLoader}
@@ -173,10 +170,11 @@ export default function Movie({ params }: MovieID) {
                       className="rounded-md"
                     />
                   ) : (
-                    <Image 
-                      src={emptyProfileImage}
+                    <img
+                      src={
+                        "https://fresh-tomatoes.onrender.com/Images/missing.png"
+                      }
                       alt={movieData.crew[0].name}
-                      fill
                       className="rounded-md"
                     />
                   )}
@@ -211,7 +209,7 @@ export default function Movie({ params }: MovieID) {
                           <div className="p-4">
                             <div className="flex aspect-square relative">
                               {mem["profile_path"] != null ? (
-                                <Image 
+                                <Image
                                   src={mem["profile_path"]}
                                   alt={mem.name}
                                   loader={imageLoader}
@@ -219,10 +217,11 @@ export default function Movie({ params }: MovieID) {
                                   className="rounded-md"
                                 />
                               ) : (
-                                <Image 
-                                  src={emptyProfileImage}
+                                <img
+                                  src={
+                                    "https://fresh-tomatoes.onrender.com/Images/missing.png"
+                                  }
                                   alt={mem.name}
-                                  fill
                                   className="rounded-md"
                                 />
                               )}
