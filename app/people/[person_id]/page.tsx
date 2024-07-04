@@ -71,7 +71,7 @@ export default function Person({ params }: PersonID) {
         <div className="h-screen relative">
           <div className="relative w-full h-full">
             {peopleData?.personCreditDetails?.backdropPaths.length > 0 ? (
-              <Image unoptimized
+              <Image 
                 loader={imageLoader}
                 layout="fill"
                 src={bgImage}
@@ -80,7 +80,7 @@ export default function Person({ params }: PersonID) {
                 alt="Background Image"
               />
             ) : (
-              <Image unoptimized
+              <Image 
                 layout="fill"
                 src={loginimg}
                 objectFit="fill"
@@ -97,7 +97,7 @@ export default function Person({ params }: PersonID) {
           </div>
           <div className="relative flex flex-row items-center justify-center bg-gray-900">
             <div className="relative h-96 w-72 z-60 -mt-48 mb-16">
-              <Image unoptimized
+              <Image 
                 className="rounded-md"
                 loader={imageLoader}
                 src={
@@ -166,7 +166,7 @@ export default function Person({ params }: PersonID) {
                             <div className="p-4">
                               <div className="flex aspect-square relative">
                                 {movie["poster_path"] != null ? (
-                                  <Image unoptimized
+                                  <Image 
                                     src={movie["poster_path"]}
                                     alt={movie.name}
                                     loader={imageLoader}
@@ -174,7 +174,7 @@ export default function Person({ params }: PersonID) {
                                     className="rounded-md"
                                   />
                                 ) : (
-                                  <Image unoptimized
+                                  <Image 
                                     src={missingImg}
                                     alt={movie.name}
                                     fill

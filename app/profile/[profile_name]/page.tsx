@@ -102,7 +102,7 @@ export default function Profile({ params }: Username) {
   return (
     <div className="h-screen relative">
       <div className="relative w-full h-full">
-        <Image unoptimized
+        <Image 
           loader={imageLoader}
           layout="fill"
           src={bgImage}
@@ -123,7 +123,7 @@ export default function Profile({ params }: Username) {
               {username?.substring(0, 2) || "FT"}
             </div>
           ) : (
-            <Image unoptimized
+            <Image 
               className="p-4 rounded-full shadow-md shadow-gray-200/40"
               loader={imageLoader}
               src={avatarPath || Iconimg}
@@ -158,7 +158,7 @@ export default function Profile({ params }: Username) {
                           <div className="p-4">
                             <div className="flex aspect-square relative">
                               {movie.poster_path != null ? (
-                                <Image unoptimized
+                                <Image 
                                   src={movie["poster_path"]}
                                   alt={movie.title}
                                   loader={imageLoader}
@@ -166,7 +166,7 @@ export default function Profile({ params }: Username) {
                                   className="rounded-md"
                                 />
                               ) : (
-                                <Image unoptimized
+                                <Image 
                                   src={missingImg}
                                   alt={movie.title}
                                   fill

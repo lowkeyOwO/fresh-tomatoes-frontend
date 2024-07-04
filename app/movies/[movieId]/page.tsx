@@ -90,7 +90,7 @@ export default function Movie({ params }: MovieID) {
         <div className="h-screen relative">
           <div className="relative w-full h-full">
             {movieData.backdrop_path != null ? (
-              <Image unoptimized
+              <Image 
                 loader={imageLoader}
                 layout="fill"
                 src={movieData.backdrop_path}
@@ -99,7 +99,7 @@ export default function Movie({ params }: MovieID) {
                 alt="Background Image"
               />
             ) : (
-              <Image unoptimized
+              <Image 
                 layout="fill"
                 src={loginimg}
                 objectFit="fill"
@@ -116,7 +116,7 @@ export default function Movie({ params }: MovieID) {
           </div>
           <div className="relative flex flex-row items-center justify-center bg-gray-900">
             <div className="relative h-96 w-72 z-60 -mt-48 mb-16">
-              <Image unoptimized
+              <Image 
                 className="rounded-md"
                 loader={imageLoader}
                 src={movieData.poster_path || Iconimg}
@@ -165,7 +165,7 @@ export default function Movie({ params }: MovieID) {
               <div className="flex items-center flex-col">
                 <div className="w-48 h-48 relative">
                   {movieData.crew[0]["profile_path"] != null ? (
-                    <Image unoptimized
+                    <Image 
                       src={movieData.crew[0]["profile_path"]}
                       alt={movieData.crew[0].name}
                       loader={imageLoader}
@@ -173,7 +173,7 @@ export default function Movie({ params }: MovieID) {
                       className="rounded-md"
                     />
                   ) : (
-                    <Image unoptimized
+                    <Image 
                       src={emptyProfileImage}
                       alt={movieData.crew[0].name}
                       fill
@@ -211,7 +211,7 @@ export default function Movie({ params }: MovieID) {
                           <div className="p-4">
                             <div className="flex aspect-square relative">
                               {mem["profile_path"] != null ? (
-                                <Image unoptimized
+                                <Image 
                                   src={mem["profile_path"]}
                                   alt={mem.name}
                                   loader={imageLoader}
@@ -219,7 +219,7 @@ export default function Movie({ params }: MovieID) {
                                   className="rounded-md"
                                 />
                               ) : (
-                                <Image unoptimized
+                                <Image 
                                   src={emptyProfileImage}
                                   alt={mem.name}
                                   fill

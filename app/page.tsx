@@ -136,7 +136,7 @@ export default function Login() {
     <div className="w-screen h-screen grid grid-rows-1 md:grid-cols-5 ">
       <div className="w-full h-full bg-white md:h-screen md:w-full md:col-span-3">
         <Image
-        unoptimized
+        
           src={loginimg}
           alt="cinema"
           className="h-screen md:h-full"
