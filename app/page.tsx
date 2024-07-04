@@ -135,11 +135,11 @@ export default function Login() {
   return (
     <div className="w-screen h-screen grid grid-rows-1 md:grid-cols-5 ">
       <div className="w-full h-full bg-white md:h-screen md:w-full md:col-span-3">
-        <Image
+        <img
           src={"https://fresh-tomatoes.onrender.com/Images/loginimg.jpg"}
           alt="cinema"
           className="h-screen md:h-full"
-        ></Image>
+        ></img>
         <div className="bg-black opacity-50 w-full md:w-3/5 h-full centered justify-center absolute top-0 left-0 z-5 md:z-10"></div>
         <h1 className="hidden w-screen md:flex md:font-bold md:w-3/5  md:text-3xl absolute md:top-1/3 md:p-10 md:justify-center md:centered md:z-40 md:text-white">
           "{quote}"
@@ -148,12 +148,12 @@ export default function Login() {
           - {director}
         </h1>
       </div>
-      <Image
+      <img
         src={"https://fresh-tomatoes.onrender.com/Images/icon.png"}
         alt="logo"
         className="h-1/4 w-1/2 top-20 right-20 md:h-1/6 md:w-1/6
       absolute md:top-2 md:right-0 md:mr-8 md:mt-4"
-      ></Image>
+      ></img>
       <div className="w-full h-full md:h-screen md:w-full md:col-span-2 flex flex-col items-center text-white z-50 top-10 absolute md:top-0 md:relative justify-center">
         <LoginCard />
       </div>
