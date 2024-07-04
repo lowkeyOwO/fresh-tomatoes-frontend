@@ -5,7 +5,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    domains: ["https://image.tmdb.org/"],
+    domains: ["https://image.tmdb.org/","https://www.github.com/"],
   },
 };
 

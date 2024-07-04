@@ -136,8 +136,7 @@ export default function Login() {
     <div className="w-screen h-screen grid grid-rows-1 md:grid-cols-5 ">
       <div className="w-full h-full bg-white md:h-screen md:w-full md:col-span-3">
         <Image
-        
-          src={loginimg}
+          src={"https://fresh-tomatoes.onrender.com/Images/loginimg.jpg"}
           alt="cinema"
           className="h-screen md:h-full"
         ></Image>
@@ -150,7 +149,7 @@ export default function Login() {
         </h1>
       </div>
       <Image
-        src={webicon}
+        src={"https://fresh-tomatoes.onrender.com/Images/icon.png"}
         alt="logo"
         className="h-1/4 w-1/2 top-20 right-20 md:h-1/6 md:w-1/6
       absolute md:top-2 md:right-0 md:mr-8 md:mt-4"
