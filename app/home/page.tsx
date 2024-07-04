@@ -40,7 +40,7 @@ export default function Home() {
     return (
       <div className="bg-gray-900 w-screen">
         <div className="relative w-screen h-screen">
-          <Image
+          <Image unoptimized
             loader={imageLoader}
             layout="fill"
             src={bgImage}
@@ -87,7 +87,7 @@ export default function Home() {
                         <div className="p-4">
                           <div className="flex aspect-square relative">
                             {movie["poster_path"] != null ? (
-                              <Image
+                              <Image unoptimized
                                 src={movie["poster_path"]}
                                 alt={movie.name}
                                 loader={imageLoader}
@@ -95,7 +95,7 @@ export default function Home() {
                                 className="rounded-md"
                               />
                             ) : (
-                              <Image
+                              <Image unoptimized
                                 src={missingImg}
                                 alt={movie.name}
                                 fill
@@ -144,7 +144,7 @@ export default function Home() {
                         <div className="p-4">
                           <div className="flex aspect-square relative">
                             {movie["poster_path"] != null ? (
-                              <Image
+                              <Image unoptimized
                                 src={movie["poster_path"]}
                                 alt={movie.name}
                                 loader={imageLoader}
@@ -152,7 +152,7 @@ export default function Home() {
                                 className="rounded-md"
                               />
                             ) : (
-                              <Image
+                              <Image unoptimized
                                 src={missingImg}
                                 alt={movie.name}
                                 fill
@@ -200,7 +200,7 @@ export default function Home() {
                         <div className="p-4">
                           <div className="flex aspect-square relative">
                             {movie["poster_path"] != null ? (
-                              <Image
+                              <Image unoptimized
                                 src={movie["poster_path"]}
                                 alt={movie.name}
                                 loader={imageLoader}
@@ -208,7 +208,7 @@ export default function Home() {
                                 className="rounded-md"
                               />
                             ) : (
-                              <Image
+                              <Image unoptimized
                                 src={missingImg}
                                 alt={movie.name}
                                 fill
