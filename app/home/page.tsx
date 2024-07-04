@@ -11,7 +11,6 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { imageLoader } from "@/functions/imageLoader";
-import missingImg from "@/public/Images/missing.png";
 import { useEffect, useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
 

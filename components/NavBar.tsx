@@ -1,7 +1,4 @@
 "use client";
-
-import icon from "@/public/Images/icon.png";
-import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import {
@@ -70,11 +67,11 @@ export default function NavBar(params: TokenObj) {
       className={`w-full p-2 flex flex-row items-center justify-between top-0 z-50 absolute pb-0`}
     >
       <div onClick={() => router.replace("/home")}>
-        <Image
-          src={icon}
+        <img
+          src={"https://fresh-tomatoes.onrender.com/Images/icon.png"}
           alt="FRESH TOMATOES"
           className="w-32 py-4 left-0"
-        ></Image>
+        />
       </div>
       <div className="flex flex-row items-center justify-between p-4 gap-16">
         <div className="flex flex-row items-center justify-end">
